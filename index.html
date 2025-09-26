@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>पथरी का सफल इलाज देशी दवाओं द्वारा — Order & Info</title>
+
+  <!-- Google font for Devanagari-friendly -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #f5f7ff;
+      --accent: #e11d48; /* pink-red */
+      --accent2: #0ea5a4; /* teal */
+      --card: #ffffff;
+      --muted: #475569;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 10px 30px rgba(16,24,40,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Noto Sans Devanagari", system-ui, sans-serif;
+      background: linear-gradient(180deg,var(--bg1),#fff);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+    .nav{
+      position:sticky; top:0; z-index:999;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(90deg, rgb(98, 204, 49), rgb(58, 6, 54));
+      border-bottom: 1px solid rgba(10, 10, 10, 0.144);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 18px;
+      box-shadow: var(--shadow);
+    }
+    .nav-left{display:flex; align-items:center; gap:12px}
+    .logo {
+      width:54px;height:54px;border-radius:10px;overflow:hidden;
+      box-shadow: 0 6px 18px rgb(73, 230, 230);
+      border:2px solid rgba(255, 255, 255, 0);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand{font-weight:700; font-size:18px; color:var(--accent); margin-top:2px}
+    .subtitle{font-size:15px;color:rgb(3, 4, 83);margin-top:2px}
+
+    .nav-links{display:flex; gap:14px;align-items:center}
+    .nav-links a{color:var(--muted); text-decoration:none; font-weight:600; font-size:14px; padding:8px 10px; border-radius:8px}
+    .nav-links a:hover{background:rgba(14,165,164,0.08); color:var(--accent2)}
+
+    /* HERO */
+    .hero{
+      max-width:1200px;margin:22px auto;padding:24px;border-radius:14px;
+      display:grid;grid-template-columns: 1fr 420px; gap:20px; align-items:center;
+      animation:enter 0.8s ease both;
+    }
+    .hero-left{
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+      border-radius:12px; box-shadow: var(--shadow);
+    }
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#ff9234); color:white; font-weight:700; font-size:13px}
+    h1{font-size:28px;margin:12px 0;color:#010a1d}
+    p.lead{color:var(--muted); margin-bottom:14px}
+
+    .hero-cta{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; padding:12px 16px;
+      background:var(--accent); color:white; border-radius:10px; border:none; cursor:pointer; font-weight:700;
+      box-shadow: 0 8px 24px rgba(225,29,72,0.14);
+    }
+    .btn.secondary{background:transparent; color:var(--muted); border:1px solid rgba(15,23,42,0.06); box-shadow:none}
+
+    /* hero right card */
+    .hero-card{
+      background: linear-gradient(180deg,#fff,#fefefe);
+      border-radius:12px; padding:14px; box-shadow: 0 12px 40px rgba(14,165,164,0.06);
+      text-align:center; position:relative; overflow:hidden;
+    }
+    .hero-card img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+    .price-strip{margin-top:12px; display:flex; justify-content:space-between; align-items:center}
+    .price{font-size:20px;font-weight:800;color:var(--accent2)}
+    .order-small{padding:10px 14px;background:var(--accent2); color:white;border-radius:10px; cursor:pointer}
+
+    /* FOUR FEATURE BOXES */
+    .features{max-width:1200px;margin:20px auto; padding:18px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+    .feature{
+      background: linear-gradient(180deg,#211eca,#fffefe);
+      border-radius:12px; padding:16px; box-shadow:var(--shadow);
+      transition:transform .35s ease, box-shadow .35s; cursor:default;
+    }
+    .feature:hover{transform:translateY(-10px); box-shadow: 0 20px 50px rgba(19, 134, 201, 0.966) }
+    .feature h4{color:rgb(255, 0, 0); margin-bottom:8px}
+    .feature p{color:rgb(37, 32, 7); font-size:14px}
+
+    /* Product box special */
+    .product-card{display:flex; flex-direction:column; gap:8px; align-items:center; text-align:center}
+    .product-card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .product-price{font-weight:800;color:var(--accent); font-size:18px}
+    .product-actions{display:flex; gap:10px; margin-top:8px}
+
+    /* LONGER INFO / LIST */
+    .content{max-width:1000px;margin:28px auto;padding:18px;background:linear-gradient(180deg,#09d1135d,#0fe74546);border-radius:12px; box-shadow:var(--shadow)}
+    .content h3{color:rgb(255, 145, 0)}
+    .disease-list{display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:12px}
+    .disease-list li{background:#ffffff7a  ;padding:10px;border-radius:8px; list-style:none; color:rgb(255, 0, 0)}
+
+    /* guarantee/testimonials */
+    .two-col{display:grid;grid-template-columns:1fr 1fr; gap:18px;margin-top:18px}
+    .guarantee{padding:16px;border-radius:10px;background:linear-gradient(90deg,#22dfe946,#f0fdf4);box-shadow:var(--shadow)}
+    .testimonials{padding:12px;border-radius:10px;background:#ad169944;box-shadow:var(--shadow)}
+    .testi{padding:10px;border-radius:8px;background:rgba(4, 255, 4, 0.685);margin-bottom:10px; box-shadow:0 6px 18px rgba(14,165,164,0.03)}
+
+    /* contact & order form */
+    .contact{max-width:1000px;margin:28px auto;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);box-shadow:var(--shadow)}
+    form.grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #4287c4d3; font-size:14px}
+    textarea{grid-column:span ; resize:vertical; min-height:100px}
+    .submit{grid-column:span ; background:green; color:white; padding:12px;border-radius:10px; border:none; font-weight:700; cursor:pointer}
+
+    /* footer */
+    footer{margin-top:36px;padding:18px;text-align:center;color:var(--muted); font-size:14px}
+
+    /* floating buttons */
+    .floating{
+      position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:999;
+    }
+    .float-btn{
+      width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;
+      box-shadow:0 10px 30px rgba(2,6,23,0.12);
+      font-size:20px;
+    }
+    .call{background:linear-gradient(180deg,#1cc506,#30e2aa)}
+    /* .wa{background:linear-gradient(180deg,#00ff5e,#92e6dc)} */
+
+    /* order modal */
+    .modal-bg{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.5); z-index:1200}
+    .modal{width:92%; max-width:520px; background:white;padding:18px;border-radius:12px; box-shadow:0 20px 60px rgba(2,6,23,0.3)}
+    .close{background:#f3f4f6;border-radius:8px;padding:6px 10px; border:none; cursor:pointer}
+
+    /* small screens */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:16px}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+      form.grid{grid-template-columns:1fr}
+      textarea{grid-column:span 1}
+    }
+    @media (max-width:520px){
+      .features{grid-template-columns:1fr}
+    }
+
+    /* small animations */
+    @keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .pulse{animation:pulse 1.6s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+  </style>
+</head>
+
+  <style>
+    body{margin:0;font-family:sans-serif;background:#f9fafb;color:#111}
+    .nav{position:sticky;top:0;z-index:1000;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.05);display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+    .nav-left{display:flex;align-items:center;gap:10px}
+    .logo img{width:42px;height:42px;border-radius:6px}
+    .brand{font-weight:700;color:#e11d48}
+    .nav-links{display:flex;gap:16px}
+    .nav-links a{text-decoration:none;color:#333;font-weight:600}
+    .menu-btn{display:none;font-size:24px;background:none;border:none;cursor:pointer}
+    .mobile-menu{display:none;flex-direction:column;gap:10px;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+    .mobile-menu a{text-decoration:none;color:#111;font-weight:600}
+
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;max-width:1100px;margin:auto;padding:20px}
+    .hero img{width:100%;border-radius:8px}
+    .btn{background:#e11d48;color:white;border:none;padding:12px 18px;border-radius:8px;font-weight:700;cursor:pointer}
+    .features{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 16px}
+    .feature{background:white;padding:16px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+    .feature img{width:100%;border-radius:8px;margin-bottom:8px}
+    footer{text-align:center;padding:20px;color:#555;margin-top:30px;background:#f1f5f9}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .features{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .features{grid-template-columns:1fr}
+      .btn{width:100%;text-align:center}
+      .hero{padding:14px}
+      
+    }
+    
+  </style>
+</head>
+<body>
+
+
+<script>
+  function toggleMenu(){
+    const menu = document.getElementById('mobileMenu');
+    if(menu.style.display==="flex"){menu.style.display="none";}
+    else{menu.style.display="flex";}
+  }
+</script>
+</body>
+</html>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-left">
+      <div class="logo"><img src="logo2.jpeg" alt="Logo"></div>
+      <div>
+        <div class="brand">|| राधा स्वामी ||</div>
+        <div class="subtitle">वैद्य प्रेमराज — 9783745844</div>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">होम</a>
+      <a href="#products">प्रोडक्ट</a>
+      <a href="#services">इलाज</a>
+      <a href="#contact">संपर्क</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="padding-top:24px">
+    <div class="hero-left">
+      
+      <h1>देशी दवाओं द्वारा सफल इलाज — भरोसेमंद और प्राकृतिक</h1>
+      <p class="lead">हमारे यहाँ पथरी, पेट की तकलीफ़ों और कई खतरनाक बीमारियों का इलाज देसी दवाओं से किया जाता है — अनुभवी वैद्य के साथ।</p>
+
+      
+
+      <!-- Mini highlights -->
+      <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
+        <div style="background:linear-gradient(90deg,#e2d518,#fff); padding:10px;border-radius:10px;box-shadow:0 8px 24px rgba(255,120,0,0.06)">
+          <strong>1000+</strong><div style="font-size:12px;color:var(--muted)">संतुष्ट मरीज</div>
+        </div>
+        <div style="background:linear-gradient(90deg,#17e6a1,#fff); padding:10px;border-radius:10px;box-shadow:0 8px 24px rgba(16,185,129,0.06)">
+          <strong>गारंटी</strong><div style="font-size:12px;color:var(--muted)">नियम लागू</div>
+        </div>
+        <div style="background:linear-gradient(90deg,#0ffd07,#25b93115); padding:10px;border-radius:10px;box-shadow:0 8px 24px rgba(59,130,246,0.06)">
+          <strong>ऑनलाइन ऑर्डर</strong><div style="font-size:12px;color:var(--muted)">फोन/वॉट्सऐप</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="Gemini_Generated_Image_int2roint2roint2.png" alt="card large image">
+      <div style="padding:10px;text-align:left">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+
+<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn" onclick="openOrder(null)">अभी ऑर्डर करें</button>
+        <a class="btn secondary" href="#contact">संपर्क विवरण</a>
+      </div>
+
+
+            <div style="font-weight:800;font-size:18px;color:#224bac">Pathri Relief Combo</div>
+            <div style="font-size:13px;color:var(--muted)">देशी जड़ी-बूटियों से तैयार</div>
+          </div>
+          <div class="price-strip">
+            <div class="price">₹...</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center">
+          <div style="font-size:13px;color:var(--muted)">डिलीवरी: 2-4 दिन</div>
+          <div class="order-small" onclick="openOrder('Pathri Relief Combo — ₹...')">Order</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / 4 BOXES -->
+  <section id="products" class="features" aria-label="features">
+    <div class="feature">
+      <h4>प्रोडक्ट — दवाई का कार्ड</h4>
+      <div class="product-card">
+        <img src="main card.png" alt="product image">
+        <div style="font-weight:700">वैद्य प्रेमराज </div>
+        
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h4>इलाज और सलाह</h4>
+      <p>पेट में पथरी, गैस, पेशाब की जलन, शुगर जैसे रोगों का देसी इलाज। अनुभवी वैद्य द्वारा परामर्श और नुस्खा।</p>
+    </div>
+
+    <div class="feature">
+      <h4>गारंटी</h4>
+      <p>यदि निर्धारित अवधि में राहत नहीं मिली तो हमारी पॉलिसी के अनुसार समाधान/रिफंड की गारंटी। (नियम लागू )
+        👉 "चाय छोड़नी पड़ेगी।"</p>
+    </div>
+
+    <div class="feature">
+      <h4>ऑनलाइन ऑर्डर</h4>
+      <p>फोन या व्हाट्सएप से ऑर्डर करें — हम दवा पैक कर के डिलीवर कराते हैं।</p>
+      <div style="margin-top:10px"><button class="btn secondary" onclick="openOrder(null)">ऑर्डर फॉर्म</button></div>
+    </div>
+    <div class="feature">
+  <img src="card1.jpg" alt="">
+  <h3>Pathri Relief Combo</h3>
+  <p>कीमत: ₹...</p>
+  <a href="https://wa.me/919783745844?text=मुझे%20Pathri%20Relief%20Combo%20ऑर्डर%20करना%20है" target="_blank" class="btn">WhatsApp से Order करें</a>
+</div>
+
+  </section>
+
+  <!-- LONG INFO + TWO COLUMNS -->
+  <section id="services" class="content">
+    <h3>हम किन बीमारियों का इलाज करते हैं</h3>
+    <ul class="disease-list">
+      <li>पेट में पथरी</li>
+      <li>पेट में गैस बनना</li>
+      <li>भूख न लगना</li>
+      <li>शुगर (मधुमेह)</li>
+      <li>लाल-सफेद प्रदर</li>
+      <li>पेशाब में जलन</li>
+      <li>पेशाब कम आना</li>
+      <li>पेट में जलन</li>
+      <li>लीवर की कमी</li>
+      <li>दाद, खुजली, छाजन</li>
+      <li>धात (प्रमेह)</li>
+      <li>खूनी बवासीर</li>
+    </ul>
+
+    <div class="two-col">
+      <div class="guarantee">
+        <h4>हमारी गारंटी</h4>
+        <p style="color:var(--muted)">हमारे नुस्खे प्राकृतिक हैं और लंबे अनुभव पर आधारित हैं। 100% संतुष्टि की कोशिश रहती है — यदि अपेक्षित लाभ नहीं मिला तो संपर्क करें।</p>
+      </div>
+      <div class="testimonials">
+        <h4>ग्राहकों की राय</h4>
+        <div id="testi-wrap">
+          <div class="testi">रवि (जयपुर): "2 दिन में दर्द में आराम मिला।"</div>
+          <div class="testi">सोनल (दिल्ली): "नीरोजी पाउडर से फायदे दिखे।"</div>
+          <div class="testi">अमित (मुम्बई): "डिलीवरी तेज और प्रोडक्ट असली।"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + ORDER FORM -->
+  <section id="contact" class="contact">
+    <h3>इलाज / ऑर्डर के लिए संपर्क</h3>
+    <p style="margin-bottom:6px">📍 गाँव - मनेमा, फैलीपुरा के पास, पोस्ट - कटकड, तह. - हिंडौन, जिला - करौली (राज.)</p>
+    <p style="margin-bottom:12px">दूसरी दुकान: गाँव - डाबर, मैन स्टेण्ड, जैन मन्दिर के पीछे (पिपलाई के पास) तह. - बामनवास</p>
+
+    <form class="grid" id="mainOrderForm" onsubmit="submitForm(event)">
+      <input type="text" id="name" placeholder="पूरा नाम *" required>
+      <input type="tel" id="phone" placeholder="मोबाइल नंबर *" required>
+      <select id="productSelect">
+        <option>Pathri Relief Combo — ₹...</option>
+        <option>Pathri Care Syrup — ₹...</option>
+        <option>Stone Support Powder — ₹...</option>
+        <option>कस्टम परामर्श (कार्ड)</option>
+      </select>
+      <input type="text" id="city" placeholder="शहर / पता">
+      <textarea id="note" placeholder="अतिरिक्त जानकारी / पता"></textarea>
+      <button class="submit">ऑर्डर भेजें</button>
+    </form>
+
+    <p style="margin-top:12px;color:var(--muted)">⏰ समय: प्रातः 8 बजे से सायं 5 बजे तक | 📞 9783745844 / 9772209139</p>
+  </section>
+
+  <footer>
+    © <span id="yr"></span> देशी दवाओं द्वारा सफल इलाज • Designed with Dhoni naagar
+  </footer>
+
+  <!-- FLOATING CALL / WHATSAPP -->
+  <div class="floating">
+    <a class="float-btn call" href="tel:9783745844" title="Call">📞</a>
+    <!-- <a class="float-btn wa" href="https://wa.me/91783745844" target="_blank" title="WhatsApp"></a> -->
+  </div>
+
+  <!-- ORDER MODAL -->
+  <div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+    <div class="modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="font-weight:800">ऑर्डर फॉर्म</div>
+        <button class="close" onclick="closeModal()">बंद</button>
+      </div>
+
+      <form id="modalForm" style="margin-top:12px" onsubmit="submitModal(event)">
+        <input type="text" id="m_name" placeholder="पूरा नाम *" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eef2f7;margin-bottom:8px">
+        <input type="tel" id="m_phone" placeholder="मोबाइल नंबर *" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eef2f7;margin-bottom:8px">
+        <input type="text" id="m_product" placeholder="उत्पाद" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eef2f7;margin-bottom:8px">
+        <textarea id="m_note" placeholder="अतिरिक्त जानकारी / पता" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eef2f7;margin-bottom:8px"></textarea>
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <button type="button" class="close" onclick="closeModal()">रद्द करें</button>
+          <button type="submit" class="btn">ऑर्डर भेजें</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script>
+  // initialise year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Testimonials auto-slide (simple)
+  (function(){
+    const wrap = document.getElementById('testi-wrap');
+    if(!wrap) return;
+    let idx = 0;
+    const nodes = Array.from(wrap.children);
+    nodes.forEach((n,i)=> { n.style.display = i===0 ? 'block' : 'none'; });
+    setInterval(()=>{
+      nodes[idx].style.opacity = 1;
+      nodes[idx].style.display = 'none';
+      idx = (idx+1)%nodes.length;
+      nodes[idx].style.display = 'block';
+    }, 3800);
+  })();
+
+  // Open order modal, optionally set product
+  function openOrder(product){
+    document.getElementById('modalBg').style.display = 'flex';
+    if(product) document.getElementById('m_product').value = product;
+    document.getElementById('m_name').focus();
+  }
+  function closeModal(e){
+    document.getElementById('modalBg').style.display = 'none';
+  }
+  // prevent background click close when inside modal handled by stopPropagation
+
+  // Submit modal (mock) — here we just show alert and reset
+  function submitModal(e){
+    e.preventDefault();
+    const name = document.getElementById('m_name').value.trim();
+    const phone = document.getElementById('m_phone').value.trim();
+    const product = document.getElementById('m_product').value.trim() || 'ऑर्डर';
+    // Basic validation
+    if(!name || !phone){ alert('कृपया नाम और फोन भरें'); return; }
+    // Here you would send to server or API. For demo show message
+    alert('धन्यवाद ' + name + '\\nहमने आपका ऑर्डर लिया: ' + product + '\\nहम जल्दी संपर्क करेंगे।');
+    document.getElementById('modalForm').reset();
+    closeModal();
+  }
+
+  // Submit main form
+  function submitForm(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const product = document.getElementById('productSelect').value;
+    if(!name || !phone){ alert('कृपया नाम और फोन भरें'); return; }
+    // Mock success
+    alert('धन्यवाद ' + name + '\\nआपका ऑर्डर: ' + product + '\\nहम जल्द कॉल कर के पुष्टि करेंगे।');
+    document.getElementById('mainOrderForm').reset();
+    // Optionally: redirect to WhatsApp with message
+    // window.location.href = 'https://wa.me/91783745844?text=' + encodeURIComponent('नमस्ते, मेरा ऑर्डर: ' + product + ', नाम: ' + name + ', फोन: ' + phone);
+  }
+
+  // Small enhancement: animate feature reveal on scroll
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        ent.target.style.transform = 'translateY(0)';
+        ent.target.style.opacity = 1;
+        ent.target.style.transition = 'all 0.6s ease';
+      } else {
+        // optionally hide again
+      }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.feature, .content, .hero-card, .info, .contact').forEach(el=>{
+    el.style.opacity = 0; el.style.transform = 'translateY(14px)';
+    observer.observe(el);
+  });
+
+</script>
+</body>
+</html>
